@@ -1,16 +1,18 @@
-FROM jac18281828/rust:latest
+FROM ghcr.io/jac18281828/rust:latest
 
 ARG PROJECT=rethex
 WORKDIR /workspaces/${PROJECT}
 
-RUN yamlfmt --check .github/*.yml .github/workflows/*.yml
+
 
 USER rust
 ENV USER=rust
-ENV PATH=/home/${USER}/.cargo/bin:$PATH
+ENV PATH=/home/${USER}/.cargo/bin:$PATH:/usr/local/go/bin
 # source $HOME/.cargo/env
 
 COPY --chown=rust:rust . .
+
+RUN yamlfmt -lint .github/*.yml .github/workflows/*.yml
 
 RUN cargo fmt --check
 RUN cargo clippy --all-features --no-deps
