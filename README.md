@@ -10,7 +10,7 @@
 2\. init holesky
 
 ```bash
-    $ cargo run -- --chain holesky --datadir data
+    $ cargo run -- init --chain holesky --datadir data
 ```
 
 3\. start node
