@@ -3,8 +3,6 @@ FROM ghcr.io/jac18281828/rust:latest
 ARG PROJECT=rethex
 WORKDIR /workspaces/${PROJECT}
 
-
-
 USER rust
 ENV USER=rust
 ENV PATH=/home/${USER}/.cargo/bin:$PATH:/usr/local/go/bin
